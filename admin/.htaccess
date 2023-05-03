@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteRule ^/?$ index.php [L]
+RewriteRule ^masuk?$ masuk.php [L]
+RewriteRule ^([0-9a-zA-Z_-]+)?$ index.php?halaman=$1 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/filter/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)?$ index.php?halaman=$1&bulan_pengunjung=$2&tahun_pengunjung=$3 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)?$ index.php?halaman=$1&kategori_rekening=$2 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/kategori/([0-9a-zA-Z_-]+)?$ index.php?halaman=$1&link_menu_games=$2 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/kategori/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)?$ index.php?halaman=$1&link_menu_games=$2&link_sub_menu_games=$3 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/kategori/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)?$ index.php?halaman=$1&link_menu_games=$2&link_sub_menu_games=$3&link_games=$4 [L]

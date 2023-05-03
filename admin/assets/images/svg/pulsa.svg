@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="Pulsa" transform="translate(-104 -382)">
+    <g id="mobile" transform="translate(104 382)">
+      <path id="Vector" d="M26.52,0H8.147C2.167,0,0,2.067,0,7.874V33.459c0,5.807,2.167,7.874,8.147,7.874H26.5c6,0,8.168-2.067,8.168-7.874V7.874C34.667,2.067,32.5,0,26.52,0ZM17.333,35.753a3.621,3.621,0,1,1,3.792-3.617A3.708,3.708,0,0,1,17.333,35.753Zm4.333-26.97H13a1.589,1.589,0,0,1-1.625-1.55A1.589,1.589,0,0,1,13,5.683h8.667a1.589,1.589,0,0,1,1.625,1.55,1.589,1.589,0,0,1-1.625,1.55Z" transform="translate(6.667 3.333)" fill="#292d32"/>
+      <path id="Vector-2" data-name="Vector" d="M0,0H48V48H0Z" transform="translate(48 48) rotate(180)" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

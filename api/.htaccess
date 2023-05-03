@@ -1,0 +1,2 @@
+RewriteEngine On    # Turn on the rewriting engine
+RewriteRule ^create_anggota create_anggota.php [NC,L]

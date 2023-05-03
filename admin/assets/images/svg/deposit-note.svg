@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="41" height="43" viewBox="0 0 41 43">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2" data-name="Rectangle 2" width="10.016" height="10.029" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Logo_Deposit_Bg" data-name="Logo Deposit Bg" transform="translate(-1356 -25.851)">
+    <g id="Group_9910" data-name="Group 9910" transform="translate(1356 26)">
+      <rect id="Rectangle_16870" data-name="Rectangle 16870" width="41" height="43" rx="6" transform="translate(0 -0.149)" fill="none"/>
+    </g>
+    <g id="Deposit_Wallet_bg" data-name="Deposit Wallet bg" transform="translate(1361.614 32.326)" fill="#fff">
+      <g id="Group_179" data-name="Group 179" transform="translate(0 0)">
+        <path id="Vector" d="M0,0H30.2V30.2H0Z" fill="none" opacity="0"/>
+        <path id="Vector-2" data-name="Vector" d="M15.486,2.383V7.147H13.6V2.383a.5.5,0,0,0-.689-.464L2.972,5.668A1.685,1.685,0,0,0,1.881,7.26V8.1A4.681,4.681,0,0,0,0,11.862V7.256A3.571,3.571,0,0,1,2.307,3.913L12.262.151A2.477,2.477,0,0,1,13.1,0a2.389,2.389,0,0,1,2.383,2.383Z" transform="translate(3.135 2.572)"/>
+        <path id="Vector-3" data-name="Vector" d="M3.767.627V1.881a.626.626,0,0,1-.615.627H1.322A1.3,1.3,0,0,1,.006,1.367a1.252,1.252,0,0,1,.364-1A1.192,1.192,0,0,1,1.247,0H3.141a.629.629,0,0,1,.627.627Z" transform="translate(23.298 17.623)"/>
+        <path id="Vector-4" data-name="Vector" d="M21.388,6.52h1.283a1.26,1.26,0,0,0,1.264-1.253V4.715A4.736,4.736,0,0,0,19.194,0H4.735A4.74,4.74,0,0,0,0,4.715V6.945a.713.713,0,0,0,.957.627A6.906,6.906,0,0,1,10.076,14.1a7.248,7.248,0,0,1-.617,2.77.7.7,0,0,0,.6.99h9.131a4.736,4.736,0,0,0,4.739-4.713v-.239a1.26,1.26,0,0,0-1.261-1.253h-1.1a2.733,2.733,0,0,1-2.681-1.906,2.587,2.587,0,0,1,2.492-3.235Zm-6.9-.254h-6.3a.94.94,0,1,1,0-1.881h6.3a.94.94,0,1,1,0,1.881Z" transform="translate(3.135 9.823)"/>
+        <g id="Group_8" data-name="Group 8" transform="translate(11.304 28.944) rotate(180)">
+          <g id="Group_7" data-name="Group 7" clip-path="url(#clip-path)">
+            <path id="Path_2" data-name="Path 2" d="M8.546,1.461A4.9,4.9,0,0,0,6.215.15,5.014,5.014,0,0,0,1.459,1.464,4.929,4.929,0,0,0,.018,4.68,4.4,4.4,0,0,0,.15,6.215,4.893,4.893,0,0,0,1.464,8.559a5.014,5.014,0,1,0,7.086-7.1M7.58,6.009l-.957.776-.486.4c-.182.147-.356.3-.543.441a.982.982,0,0,1-.6.192,1.314,1.314,0,0,1-.839-.419c-.157-.143-.319-.277-.486-.407L2.415,6.009a.937.937,0,1,1,1.15-1.48l.5.386V3.11a.913.913,0,0,1,.255-.637.937.937,0,0,1,.279-.2.952.952,0,0,1,.726-.048.936.936,0,0,1,.62.885c0,.592,0,1.186.013,1.791.151-.129.322-.257.476-.374A.937.937,0,1,1,7.581,6.008" transform="translate(0.001 0.001)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
