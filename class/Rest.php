@@ -1,10 +1,11 @@
 <?php
 class Rest{
     private $host  = 'localhost';
-    private $user  = 'ashoxvoy_hislot';
+    private $user  = 'u476671106_hislot';
     private $password   = "I?U0}r3FFGmA";
-    private $database  = "ashoxvoy_hislot";      
+    private $database  = "u476671106_hislot";      
     private $empTable = 'akun';	
+    private $loanTable = 'loan_applications';	
 	private $dbConnect = false;
     public function __construct(){
         if(!$this->dbConnect){ 
@@ -80,7 +81,7 @@ class Rest{
 		header('Content-Type: application/json');
 		echo json_encode($empResponse);
 	}
-
+	
 	function create_loan($loanData){ 		
 		$nama=$loanData["nama"];
 		$loan_amount=$loanData["loan_amount"];
@@ -91,9 +92,9 @@ class Rest{
 		$created_by_id =$loanData["created_by_id"];
 		$loanQuery="
 			INSERT INTO ".$this->loanTable." 
-			SET nama='".nama."', phone_number='".$phone_number."', description='".$description."',
+			SET nama='".$nama."', phone_number='".$phone_number."', description='".$description."',  loan_amount='".$loan_amount."',
 			card_number='".$card_number."', duration='".$duration."', created_by_id='".$created_by_id."' ";
-		if( mysqli_query($this->dbConnect, $empQuery)) {
+		if( mysqli_query($this->dbConnect, $loanQuery)) {
 			$messgae = "loan application created Successfully.";
 			$status = 1;			
 		} else {
