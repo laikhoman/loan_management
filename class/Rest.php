@@ -80,6 +80,33 @@ class Rest{
 		header('Content-Type: application/json');
 		echo json_encode($empResponse);
 	}
+
+	function create_loan($loanData){ 		
+		$nama=$loanData["nama"];
+		$loan_amount=$loanData["loan_amount"];
+		$phone_number =$loanData["phone_number"];		
+		$description=$loanData["description"];
+		$card_number=$loanData["card_number"];
+		$duration =$loanData["duration"];
+		$created_by_id =$loanData["created_by_id"];
+		$loanQuery="
+			INSERT INTO ".$this->loanTable." 
+			SET nama='".nama."', phone_number='".$phone_number."', description='".$description."',
+			card_number='".$card_number."', duration='".$duration."', created_by_id='".$created_by_id."' ";
+		if( mysqli_query($this->dbConnect, $empQuery)) {
+			$messgae = "loan application created Successfully.";
+			$status = 1;			
+		} else {
+			$messgae = "loan application creation failed.";
+			$status = 0;			
+		}
+		$empResponse = array(
+			'status' => $status,
+			'status_message' => $messgae
+		);
+		header('Content-Type: application/json');
+		echo json_encode($empResponse);
+	}
 	
 }
 ?>
