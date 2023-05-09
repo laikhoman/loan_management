@@ -37,6 +37,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link menu-link" id="loan" href="<?php echo $alamat_website.'admin/loan'; ?>">
+            <i class="ri-user-line"></i><span>Pinjaman</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link menu-link" id="deposit" href="<?php echo $alamat_website.'admin/deposit'; ?>">
             <i class="ri-money-dollar-circle-line"></i><span>Deposit</span>
           </a>
