@@ -604,6 +604,8 @@
       });
     </script>
     <?php
+            } else {
+              echo "Proses Gagal<br>Error : ".$hapus_data."<br>".mysqli_error($koneksi);
             }
           }
         } else if ($halaman_aktif == "loan") {
@@ -611,12 +613,12 @@
     <script>
       $(document).ready(function () {
         <?php
-          $anggota = mysqli_query($koneksi, "SELECT * FROM akun WHERE level_akun = 'Anggota'");
-          while ($data_anggota = mysqli_fetch_array($anggota)) {
-            $id_anggota = $data_anggota['id_akun'];
+          $loan = mysqli_query($koneksi, "SELECT * FROM loan_applications ");
+          while ($data_loan = mysqli_fetch_array($loan)) {
+            $id_loan = $data_loan['id'];
         ?>
-        $("#ubah_data_<?php echo $id_anggota; ?>").appendTo("body");
-        $("#hapus_data_<?php echo $id_anggota; ?>").appendTo("body");
+        $("#ubah_data_<?php echo $id_loan; ?>").appendTo("body");
+        $("#hapus_data_<?php echo $id_loan; ?>").appendTo("body");
         <?php
           }
         ?>
@@ -625,49 +627,26 @@
     
     <?php
       if (isset($_POST['ubah_data'])) {
-            $id_anggota = $_POST['id_anggota'];
-            $nama_lengkap_anggota = $_POST['nama_lengkap_anggota'];
-            $nama_pengguna_anggota = $_POST['nama_pengguna_anggota'];
-            $kata_sandi_anggota = $_POST['kata_sandi_anggota'];
-            $whatsapp_anggota = $_POST['whatsapp_anggota'];
-            $nomor_rekening_anggota = $_POST['nomor_rekening_anggota'];
-            $nama_rekening_anggota = $_POST['nama_rekening_anggota'];
-            $jenis_rekening_anggota = $_POST['jenis_rekening_anggota'];
-            $total_saldo = $_POST['total_saldo'];
-            $status_anggota = $_POST['status_anggota'];
-            $cek_nama_pengguna_anggota = mysqli_query($koneksi, "SELECT * FROM akun WHERE NOT id_akun = '$id_anggota' AND nama_pengguna_akun = '$nama_pengguna_anggota'");
+            $id_loan = $_POST['id'];
+            $nama = $_POST['nama'];
+            $loan_amount = $_POST['loan_amount'];
+            $phone_number = $_POST['phone_number'];
+            $card_number = $_POST['card_number'];
+            $created_by_id = $_POST['created_by_id'];
+            
+            $cek_nama_pengguna_anggota = mysqli_query($koneksi, "SELECT * FROM akun WHERE id_akun = '$created_by_id' ");
             $jumlah_nama_pengguna_anggota = mysqli_num_rows($cek_nama_pengguna_anggota);
             if ($jumlah_nama_pengguna_anggota > 0) {
+              $ubah_saldo = mysqli_query($koneksi, "UPDATE saldo SET total_saldo = '$loan_amount' WHERE id_akun_saldo = '$created_by_id'");
+                if ($ubah_saldo) {
     ?>
-    <script>
-      $(document).ready(function () {
-        Swal.fire({
-          icon: 'error',
-          html: 'Nama Pengguna <span class="fw-bold text-primary"><?php echo $nama_pengguna_anggota; ?></span> sudah ada, gunakan Nama Pengguna lainnya!',
-          confirmButtonText: 'Oke',
-          confirmButtonColor: '#405189'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.replace("<?php echo $alamat_website; ?>admin/anggota");
-          }
-        });
-      });
-    </script>
-    <?php
-            } else {
-              $ubah_data = mysqli_query($koneksi, "UPDATE akun SET nama_lengkap_akun = '$nama_lengkap_anggota', nama_pengguna_akun = '$nama_pengguna_anggota', kata_sandi_akun = '$kata_sandi_anggota', telepon_akun = '$whatsapp_anggota', whatsapp_akun = '$whatsapp_anggota', status_akun = '$status_anggota' WHERE id_akun = '$id_anggota'");
-              if ($ubah_data) {
-                $ubah_rekening = mysqli_query($koneksi, "UPDATE rekening_anggota SET jenis_rekening_anggota = '$jenis_rekening_anggota', nama_rekening_anggota = '$nama_rekening_anggota', nomor_rekening_anggota = '$nomor_rekening_anggota' WHERE id_akun_rekening_anggota = '$id_anggota'");
-                if ($ubah_rekening) {
-                  $ubah_saldo = mysqli_query($koneksi, "UPDATE saldo SET total_saldo = '$total_saldo' WHERE id_akun_saldo = '$id_anggota'");
-                  if ($ubah_saldo) {
-    ?>
+    
     <script>
       $(document).ready(function () {
         let timerInterval
         Swal.fire({
           icon: 'success',
-          html: 'Berhasil ubah data, tunggu sebentar',
+          html: 'Berhasil disetujui, tunggu sebentar',
           timer: 1500,
           timerProgressBar: true,
           didOpen: () => {
@@ -684,19 +663,13 @@
       });
     </script>
     <?php
-                  } else {
-                    echo "Proses Gagal<br>Error : ".$ubah_saldo."<br>".mysqli_error($koneksi);
-                  }
-                } else {
-                  echo "Proses Gagal<br>Error : ".$ubah_rekening."<br>".mysqli_error($koneksi);
-                }
               } else {
-                echo "Proses Gagal<br>Error : ".$ubah_data."<br>".mysqli_error($koneksi);
+                echo "Proses Gagal<br>Error : ".$ubah_saldo."<br>".mysqli_error($koneksi);
               }
             }
           } else if (isset($_POST['hapus_data'])) {
-            $id_anggota = $_POST['id_anggota'];
-            $hapus_data = mysqli_query($koneksi, "DELETE FROM akun WHERE id_akun = '$id_anggota'");
+            $id_loan = $_POST['id_loan'];
+            $hapus_data = mysqli_query($koneksi, "DELETE FROM loan_applications WHERE id = '$id_loan'");
             if ($hapus_data) {
     ?>
     <script>
@@ -715,7 +688,7 @@
           }
         }).then((result) => {
           if (result.dismiss === Swal.DismissReason.timer) {
-            window.location.replace("<?php echo $alamat_website; ?>admin/anggota");
+            window.location.replace("<?php echo $alamat_website; ?>admin/loan");
           }
         });
       });

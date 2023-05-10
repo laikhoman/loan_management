@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-      <h4 class="mb-sm-0">Pinjaman</h4>
+      <h4 class="mb-sm-0">Saldo</h4>
       <div class="page-title-right">
         <ol class="breadcrumb m-0">
           <li class="breadcrumb-item">
@@ -25,31 +25,22 @@
                 <thead>
                   <tr>
                     <th scope="col">Nama Pengguna</th>
-                    <th scope="col">Jumlah Pinjaman</th>
-                    <th scope="col">Nomor Kartu </th>
-                    <th scope="col">Nomor HP</th>
-                    <th scope="col">Tenor</th>
+                    <th scope="col">Total Saldo</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                    $anggota = mysqli_query($koneksi, "SELECT * FROM loan_applications");
+                    $anggota = mysqli_query($koneksi, "SELECT * FROM saldo");
                     while ($data_anggota = mysqli_fetch_array($anggota)) {
-                      $id_loan = $data_anggota['id'];
-                      $nama_pengguna = $data_anggota['nama'];
-                      $loan_amount = $data_anggota['loan_amount'];
-                      $card_number = $data_anggota['card_number'];
-                      $phone_number = $data_anggota['phone_number'];
-                      $durasi = $data_anggota['duration'];
-                      $status_loan = $data_anggota['status_loan'];
+                      $id = $data_anggota['id'];
+                      $id_akun_saldo = $data_anggota['id_akun_saldo'];
+                      $total_saldo = $data_anggota['total_saldo'];
                   ?>
                   <tr>
-                    <td><?php echo $nama_pengguna; ?></td>
-                    <td><?php echo $loan_amount; ?></td>
-                    <td><?php echo $card_number; ?></td>
-                    <td><?php echo $phone_number; ?></td>
-                    <td><?php echo $durasi; ?></td>
+                    
+                    <td><?php echo $id_akun_saldo; ?></td>
+                    <td><?php echo $total_saldo; ?></td>
                     <td>
                       <?php
                         if ($status_loan == "Aktif") {

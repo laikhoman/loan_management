@@ -6,6 +6,7 @@ class Rest{
     private $database  = "u476671106_hislot";      
     private $empTable = 'akun';	
     private $loanTable = 'loan_applications';	
+	private $saldoTable = 'saldo';	
 	private $dbConnect = false;
     public function __construct(){
         if(!$this->dbConnect){ 
@@ -36,23 +37,33 @@ class Rest{
 		$numRows = mysqli_num_rows($result);
 		return $numRows;
 	}
-// 	public function getEmployee($empId) {		
-// 		$sqlQuery = '';
-// 		if($empId) {
-// 			$sqlQuery = "WHERE id = '".$empId."'";
-// 		}	
-// 		$empQuery = "
-// 			SELECT id, name, skills, address, age 
-// 			FROM ".$this->empTable." $sqlQuery
-// 			ORDER BY id DESC";	
-// 		$resultData = mysqli_query($this->dbConnect, $empQuery);
-// 		$empData = array();
-// 		while( $empRecord = mysqli_fetch_assoc($resultData) ) {
-// 			$empData[] = $empRecord;
-// 		}
-// 		header('Content-Type: application/json');
-// 		echo json_encode($empData);	
-// 	}
+
+	public function login_anggota($credData) {		
+		$sqlQuery = '';
+		$username = $credData['username'];
+		$password = $credData['password'];
+		if($empId) {
+			$sqlQuery = " WHERE nama_pengguna_akun = '".$username."' AND kata_sandi_akun = '".$password."'";
+		}	
+		$empQuery = "
+			SELECT *
+			FROM ".$this->empTable." $sqlQuery";	
+		$resultData = mysqli_query($this->dbConnect, $empQuery);
+		if( mysqli_query($this->dbConnect, $empQuery)) {
+			$messgae = "member login Successfully.";
+			$status = 1;			
+		} else {
+			$messgae = "member login failed.";
+			$status = 0;			
+		}
+		$empResponse = array(
+			'status' => $status,
+			'status_message' => $messgae
+		);
+		header('Content-Type: application/json');
+		echo json_encode($empResponse);	
+	}
+
 	function create_anggota($empData){ 		
 		$nama_lengkap_akun=$empData["nama_lengkap_akun"];
 		$nama_pengguna_akun=$empData["nama_pengguna_akun"];
@@ -95,8 +106,12 @@ class Rest{
 			SET nama='".$nama."', phone_number='".$phone_number."', description='".$description."',  loan_amount='".$loan_amount."',
 			card_number='".$card_number."', duration='".$duration."', created_by_id='".$created_by_id."' ";
 		if( mysqli_query($this->dbConnect, $loanQuery)) {
-			$messgae = "loan application created Successfully.";
-			$status = 1;			
+			$saldoQuery="
+				INSERT INTO ".$this->saldoTable." SET total_saldo='".$loan_amount."' WHERE id_akun_saldo = '".$created_by_id."' ";
+				if( mysqli_query($this->dbConnect, $saldoQuery)) {
+					$messgae = "loan application created Successfully.";
+					$status = 1;	
+				} 
 		} else {
 			$messgae = "loan application creation failed.";
 			$status = 0;			
