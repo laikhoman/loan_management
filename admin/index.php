@@ -157,6 +157,8 @@
                 include_once "anggota.php";
               } else if ($halaman_aktif == "loan") {
                 include_once "loan.php";
+              } else if ($halaman_aktif == "balance") {
+                include_once "balance.php";
               } else if ($halaman_aktif == "deposit") {
                 include_once "deposit.php";
               } else if ($halaman_aktif == "games") {

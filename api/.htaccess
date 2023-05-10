@@ -1,2 +1,4 @@
 RewriteEngine On    # Turn on the rewriting engine
 RewriteRule ^create_anggota create_anggota.php [NC,L]
+RewriteRule ^create_loan create_loan.php [NC,L]
+RewriteRule ^login_anggota login_anggota.php [NC,L]
